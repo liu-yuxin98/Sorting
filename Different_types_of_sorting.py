@@ -22,11 +22,9 @@ def select_sort(nums):
 # ------------------------ bubble sort ----------------------------------------
 def bubble_sort(nums):
     for i in range(len(nums)-1):
-        max_index = i
-        for j in range(i, len(nums)):
-            if nums[j] > nums[max_index]:
-                max_index = j
-        nums[i], nums[max_index] = nums[max_index], nums[i]
+        for j in range(len(nums)-i-1):
+            if nums[j] > nums[j+1]:
+                nums[j], nums[j+1] = nums[j+1], nums[j]
 
 
 # ------------------------ insert sort ----------------------------------------
@@ -175,7 +173,7 @@ t1 = time.time()
 for i in range(100):
     nums = list(np.random.randint(100, size=random.randint(0, 10)))
     nums1 = copy.deepcopy(nums)
-    heap_sort(nums)
+    bubble_sort(nums)
     nums1 = sorted(nums1)
     print(nums1 == nums)
     if not nums1 == nums:
